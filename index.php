@@ -12,19 +12,20 @@ $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
 //print_r($data);
 $products=array('Order parts','Request Service');
-$part= array("Volvo", "BMW", "Toyota","Nissan","Subaru","Jaguar","Mitsubishi");
+$make= array("Volvo", "BMW", "Toyota","Nissan","Subaru","Jaguar","Mitsubishi");
+$model=array(array("volvo1","volvo2"), array("BMW1","BMW2"),array("toyota1","toyota2"),array());
 $firstMarkup=array('keyboard' => array(array($products[0]),array($products[1])));
 
 print_r($firstMarkup);
 $replyMarkup = array(
     'keyboard' => array(
-        array($part[0]),
-        array($part[1]),
-        array($part[2]),
-        array($part[3]),
-        array($part[4]),
-        array($part[5]),
-        array($part[6])
+        array($make[0]),
+        array($make[1]),
+        array($make[2]),
+        array($make[3]),
+        array($make[4]),
+        array($make[5]),
+        array($make[6])
     )
 );
 
@@ -33,8 +34,8 @@ if ($text=='Order parts'){
     $driver->send_custom_keyboard($id, "Make", json_encode($replyMarkup));
     
 }
-elseif (in_array($text,$part)){
-    $driver->send_custom_keyboard($id,"model","");
+elseif (in_array($text,$make)){
+    $driver->sendmessage($id,"model");
 
 }
 
