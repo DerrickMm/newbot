@@ -11,6 +11,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
 //print_r($data);
+//sample data for the bot to use
 $products=array('Order parts','Request Service');
 $make= array("Volvo", "BMW", "Toyota","Nissan","Subaru","Jaguar","Mitsubishi");
 $model=array(array("volvo1","volvo2"), array("BMW1","BMW2"),array("toyota1","toyota2"),array());
