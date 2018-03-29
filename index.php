@@ -1,9 +1,12 @@
 <?php
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ *
  */
+
+//At this point I already wish I used python.
 include 'driver.php';
 $driver = new Driver();
 $data = json_decode(file_get_contents('php://input'), true);
