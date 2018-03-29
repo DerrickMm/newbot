@@ -12,8 +12,10 @@
  */
 class driver {
     //put your code here
+    //I have put in my bot token here please don't get any ideas
 
     /**
+     * @description send a message
      * @param $id
      * @param $text
      * @return mixed
@@ -34,6 +36,7 @@ class driver {
     }
 
     /**
+     * @description send a message with custom keyboard
      * @param $id
      * @param $text
      * @param $markup
