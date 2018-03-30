@@ -12,7 +12,7 @@ $driver = new Driver();
 $data = json_decode(file_get_contents('php://input'), true);
 $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
-
+//print_r($driver->makemodel());
 //sample data for the bot to use
 // change to json data later
 $products=array('Order parts','Request Service');
@@ -32,14 +32,19 @@ $replyMarkup = array(
         array($make[6])
     )
 );
+$modelmarkup=array(
+    'keyboard' => array(
+        $driver->makemodel("Audi")
+    )
+);
 //death by if statements
 if ($text=='Order parts'){
-    $driver->sendmessage($id, "Great! Tell us about your car?");
+    $driver->sendmessage($id, "Great! Tell us about your car");
     $driver->send_custom_keyboard($id, "Make", json_encode($replyMarkup));
     
 }
 elseif (in_array($text,$make)){
-    $driver->sendmessage($id,"model");
+    $driver->send_custom_keyboard($id,"Model",$modelmarkup);
 
 }
 else {
