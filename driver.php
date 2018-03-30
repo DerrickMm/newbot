@@ -63,8 +63,8 @@ class driver {
         foreach ($data as $row){
             if ($row["make"]==$make){
 
-                $model=array($row["model"]);
-                $arr[]=$model;
+                //$model=array($row["model"]);
+                $arr[]=$row["model"];
             }
 
         }

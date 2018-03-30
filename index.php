@@ -13,6 +13,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
 print_r($driver->makemodel("Audi"));
+
 //sample data for the bot to use
 // change to json data later
 $products=array('Order parts','Request Service');
@@ -21,6 +22,7 @@ $model=array(array("volvo1","volvo2"), array("BMW1","BMW2"),array("toyota1","toy
 $firstMarkup=array('keyboard' => array(array($products[0]),array($products[1])));
 
 //print_r($firstMarkup);
+
 $replyMarkup = array(
     'keyboard' => array(
         array($make[0]),
