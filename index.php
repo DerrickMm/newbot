@@ -44,9 +44,9 @@ $replyMarkup = array(
     )
 );
 $modelmarkup=array(
-    'keyboard' =>array(
+    'keyboard' =>
         $driver->makemodel("Audi")
-    )
+
 );
 //death by if statements
 if ($text=='Order parts'){
