@@ -41,7 +41,7 @@ elseif (in_array($text,$driver->allmakes())){
 elseif (in_array($text,$driver->allmodels())){
     $driver->send_custom_keyboard($id,"Year",json_encode($removeKeyboard));
 }
-elseif (preg_match('/[1-9]\d{3}/',$text)){
+elseif (preg_match('~^\d{4}$~', $text)){
     $driver->sendMessage($id,"Nice!");
 
 }
