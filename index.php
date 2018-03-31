@@ -11,7 +11,7 @@ session_start();
 $data = json_decode(file_get_contents('php://input'), true);
 $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
-$contact=$data["message"]["contact"];
+$contact=$data["message"]["contact"]["phoneNumber"];
 $all[]=$text;
 $_SESSION['texts']=$all;
 print_r($_SESSION['texts']);
