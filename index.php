@@ -17,27 +17,23 @@ $text=$data["message"]["text"];
 //sample data for the bot to use
 // change to json data later
 $products=array('Order parts','Request Service');
-$make= array("Volvo", "BMW", "Toyota","Nissan","Subaru","Jaguar","Mitsubishi");
-$model=array(array("volvo1","volvo2"), array("BMW1","BMW2"),array("toyota1","toyota2"),array());
+
 $firstMarkup=array('keyboard' => array(array($products[0]),array($products[1])));
 
-print_r($driver->make());
+print_r($driver->allmakes());
 
 $makeMarkup = array(
     'keyboard' =>
     $driver->make()
 );
-$modelMarkup=array(
-    'keyboard' =>
-        $driver->model("Audi")
-);
+
 //death by if statements
 if ($text=='Order parts'){
     $driver->sendmessage($id, "Great! Tell us about your car");
     $driver->send_custom_keyboard($id, "Make", json_encode($makeMarkup));
     
 }
-elseif (in_array($text,$make)){
+elseif (in_array($text,$driver->allmakes())){
     $driver->send_custom_keyboard($id,"Model",json_encode($driver->model($text)));
 
 }
