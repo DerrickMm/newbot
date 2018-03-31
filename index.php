@@ -31,13 +31,15 @@ $makeMarkup = array(
 
 //death by if statements
 if ($text=='Order parts'){
-    $driver->sendmessage($id, "Great! Tell us about your car");
+    $driver->sendMessage($id, "Great! Tell us about your car");
     $driver->send_custom_keyboard($id, "Make", json_encode($makeMarkup));
 }
 elseif (in_array($text,$driver->allmakes())){
     $driver->send_custom_keyboard($id,"Model",json_encode($driver->model($text)));
-
 //    $driver->sendmessage($id,json_encode($_SESSION['texts']));
+}
+elseif (in_array($text,$driver->allmodels())){
+    $driver->sendMessage($id,"Year");
 }
 else {
     // initial point where the text is not recognised by the if statement.
