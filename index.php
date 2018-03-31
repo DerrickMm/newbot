@@ -23,22 +23,22 @@ $firstMarkup=array('keyboard' => array(array($products[0]),array($products[1])))
 
 print_r($driver->make());
 
-$replyMarkup = array(
+$makeMarkup = array(
     'keyboard' =>
     $driver->make()
 );
-$modelmarkup=array(
+$modelMarkup=array(
     'keyboard' =>
         $driver->model("Audi")
 );
 //death by if statements
 if ($text=='Order parts'){
     $driver->sendmessage($id, "Great! Tell us about your car");
-    $driver->send_custom_keyboard($id, "Make", json_encode($replyMarkup));
+    $driver->send_custom_keyboard($id, "Make", json_encode($makeMarkup));
     
 }
 elseif (in_array($text,$make)){
-    $driver->send_custom_keyboard($id,"Model",json_encode($modelmarkup));
+    $driver->send_custom_keyboard($id,"Model",json_encode($driver->model($text)));
 
 }
 else {

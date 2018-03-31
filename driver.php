@@ -67,6 +67,11 @@ class driver {
                 $arr[]=$model;
             }
         }
+
+        $arr=array(
+            'keyboard' =>
+                $arr
+        );
         return $arr;
     }
 
