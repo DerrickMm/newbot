@@ -11,7 +11,7 @@ session_start();
 $data = json_decode(file_get_contents('php://input'), true);
 $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
-$contact=$data["message"]["contact"];
+$contact=$data["message"]["contact"]["phone_number"];
 $all[]=$text;
 $_SESSION['texts']=$all;
 print_r($_SESSION['texts']);
@@ -48,6 +48,6 @@ elseif (preg_match('~^\d{4}$~', $text)){
 }
 else {
     // initial point where the text is not recognised by the if statement.
-    $driver->sendMessage($id,json_encode($contact));
+    $driver->sendMessage($id,$contact);
     $driver->send_custom_keyboard($id, "Which product would you like to use?", json_encode($firstMarkup));
 }
