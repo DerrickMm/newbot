@@ -42,10 +42,11 @@ elseif (in_array($text,$driver->allmodels())){
     $driver->send_custom_keyboard($id,"Year",json_encode($removeKeyboard));
 }
 elseif (preg_match('~^\d{4}$~', $text)){
-    $driver->sendMessage($id,"Nice!");
+    $driver->sendMessage($id,"Nice! Now, Which part would you like to order?");
 
 }
 else {
     // initial point where the text is not recognised by the if statement.
+    $driver->sendMessage($id,$text);
     $driver->send_custom_keyboard($id, "Which product would you like to use?", json_encode($firstMarkup));
 }
