@@ -29,6 +29,8 @@ $makeMarkup = array(
     $driver->make()
 );
 
+$removeKeyboard=array('remove_keyboard' => true);
+
 //death by if statements
 if ($text=='Order parts'){
     $driver->sendMessage($id, "Great! Tell us about your car");
@@ -39,7 +41,7 @@ elseif (in_array($text,$driver->allmakes())){
 //    $driver->sendmessage($id,json_encode($_SESSION['texts']));
 }
 elseif (in_array($text,$driver->allmodels())){
-    $driver->sendMessage($id,"Year");
+    $driver->send_custom_keyboard($id,"Year",json_encode($removeKeyboard));
 }
 else {
     // initial point where the text is not recognised by the if statement.
