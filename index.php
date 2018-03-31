@@ -54,7 +54,7 @@ if ($text=='Order parts'){
     
 }
 elseif (in_array($text,$make)){
-    $driver->send_custom_keyboard($id,"Model",$modelmarkup);
+    $driver->send_custom_keyboard($id,"Model",json_encode($modelmarkup));
 
 }
 else {
