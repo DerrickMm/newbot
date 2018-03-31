@@ -53,7 +53,8 @@ class driver {
     }
 
     /**
-     * @return string
+     * @param $make
+     * @return array
      */
 
     public function makemodel($make){
