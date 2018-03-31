@@ -9,10 +9,12 @@
 //At this point I already wish I used python.
 include 'driver.php';
 $driver = new Driver();
+session_start();
 $data = json_decode(file_get_contents('php://input'), true);
 $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
-
+$all[]=$text;
+$_SESSION['texts']=$all;
 
 //sample data for the bot to use
 // change to json data later
@@ -36,6 +38,7 @@ if ($text=='Order parts'){
 elseif (in_array($text,$driver->allmakes())){
     $driver->send_custom_keyboard($id,"Model",json_encode($driver->model($text)));
 
+    $driver->sendmessage($id,json_encode($_SESSION['texts']));
 }
 else {
     // initial point where the text is not recognised by the if statement.
