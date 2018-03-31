@@ -12,7 +12,7 @@ $driver = new Driver();
 $data = json_decode(file_get_contents('php://input'), true);
 $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
-print_r($driver->makemodel("Audi"));
+
 
 //sample data for the bot to use
 // change to json data later
@@ -21,7 +21,16 @@ $make= array("Volvo", "BMW", "Toyota","Nissan","Subaru","Jaguar","Mitsubishi");
 $model=array(array("volvo1","volvo2"), array("BMW1","BMW2"),array("toyota1","toyota2"),array());
 $firstMarkup=array('keyboard' => array(array($products[0]),array($products[1])));
 
-//print_r($firstMarkup);
+print_r(array(
+    array($make[0]),
+    array($make[1]),
+    array($make[2]),
+    array($make[3]),
+    array($make[4]),
+    array($make[5]),
+    array($make[6])
+));
+print_r($driver->makemodel("Audi"));
 
 $replyMarkup = array(
     'keyboard' => array(
@@ -35,9 +44,9 @@ $replyMarkup = array(
     )
 );
 $modelmarkup=array(
-    'keyboard' =>
+    'keyboard' =>array(
         $driver->makemodel("Audi")
-
+    )
 );
 //death by if statements
 if ($text=='Order parts'){
