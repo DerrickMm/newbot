@@ -15,14 +15,14 @@ $id= $data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
 $all[]=$text;
 $_SESSION['texts']=$all;
-
+print_r($_SESSION['texts']);
 //sample data for the bot to use
 // change to json data later
 $products=array('Order parts','Request Service');
 
 $firstMarkup=array('keyboard' => array(array($products[0]),array($products[1])));
 
-print_r($driver->allmakes());
+//print_r($driver->allmakes());
 
 $makeMarkup = array(
     'keyboard' =>
@@ -33,12 +33,11 @@ $makeMarkup = array(
 if ($text=='Order parts'){
     $driver->sendmessage($id, "Great! Tell us about your car");
     $driver->send_custom_keyboard($id, "Make", json_encode($makeMarkup));
-    
 }
 elseif (in_array($text,$driver->allmakes())){
     $driver->send_custom_keyboard($id,"Model",json_encode($driver->model($text)));
 
-    $driver->sendmessage($id,json_encode($_SESSION['texts']));
+//    $driver->sendmessage($id,json_encode($_SESSION['texts']));
 }
 else {
     // initial point where the text is not recognised by the if statement.
