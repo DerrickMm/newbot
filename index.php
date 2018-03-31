@@ -1,9 +1,7 @@
 <?php
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- *
+ * How can I create my own licence?
  */
 
 //At this point I already wish I used python.
@@ -42,6 +40,10 @@ elseif (in_array($text,$driver->allmakes())){
 }
 elseif (in_array($text,$driver->allmodels())){
     $driver->send_custom_keyboard($id,"Year",json_encode($removeKeyboard));
+}
+elseif (preg_match('/[1-9]\d{3}/',$text)){
+    $driver->sendMessage($id,"Nice!");
+
 }
 else {
     // initial point where the text is not recognised by the if statement.
