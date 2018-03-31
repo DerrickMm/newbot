@@ -21,31 +21,15 @@ $make= array("Volvo", "BMW", "Toyota","Nissan","Subaru","Jaguar","Mitsubishi");
 $model=array(array("volvo1","volvo2"), array("BMW1","BMW2"),array("toyota1","toyota2"),array());
 $firstMarkup=array('keyboard' => array(array($products[0]),array($products[1])));
 
-print_r(array(
-    array($make[0]),
-    array($make[1]),
-    array($make[2]),
-    array($make[3]),
-    array($make[4]),
-    array($make[5]),
-    array($make[6])
-));
-print_r($driver->makemodel("Audi"));
+print_r($driver->make());
 
 $replyMarkup = array(
-    'keyboard' => array(
-        array($make[0]),
-        array($make[1]),
-        array($make[2]),
-        array($make[3]),
-        array($make[4]),
-        array($make[5]),
-        array($make[6])
-    )
+    'keyboard' =>
+    $driver->make()
 );
 $modelmarkup=array(
     'keyboard' =>
-        $driver->makemodel("Audi")
+        $driver->model("Audi")
 );
 //death by if statements
 if ($text=='Order parts'){
