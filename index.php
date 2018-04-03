@@ -9,35 +9,23 @@ include 'driver.php';
 $driver = new Driver();
 session_start();
 $data = json_decode(file_get_contents('php://input'), true);
-$id= $data["message"]["chat"]["id"];
+$id=$data["message"]["chat"]["id"];
 $text=$data["message"]["text"];
-$contact=$data["message"]["contact"]["phone_number"];
-$all[]=$text;
-$_SESSION['texts']=$all;
+//$contact=$data["message"]["contact"]["phone_number"];
 print_r($_SESSION['texts']);
-//sample data for the bot to use
-// change to json data later
+//sample data for the bot to use ** changed it to json!**
 $products=array('Order parts','Request Service');
-
 $firstMarkup=array('keyboard' => array(array($products[0]),array($products[1])));
-
-//print_r($driver->allmakes());
-
-$makeMarkup = array(
-    'keyboard' =>
-    $driver->make()
-);
-
+$makeMarkup = array('keyboard' => $driver->make());
 $removeKeyboard=array('remove_keyboard' => true);
 
-//death by if statements
+//death by if statement
 if ($text=='Order parts'){
     $driver->sendMessage($id, "Great! Tell us about your car");
     $driver->send_custom_keyboard($id, "Make", json_encode($makeMarkup));
 }
 elseif (in_array($text,$driver->allmakes())){
     $driver->send_custom_keyboard($id,"Model",json_encode($driver->model($text)));
-//    $driver->sendmessage($id,json_encode($_SESSION['texts']));
 }
 elseif (in_array($text,$driver->allmodels())){
     $driver->send_custom_keyboard($id,"Year",json_encode($removeKeyboard));
@@ -48,6 +36,7 @@ elseif (preg_match('~^\d{4}$~', $text)){
 }
 else {
     // initial point where the text is not recognised by the if statement.
-    $driver->sendMessage($id,$contact);
+//    $driver->sendMessage($id,$contact);
     $driver->send_custom_keyboard($id, "Which product would you like to use?", json_encode($firstMarkup));
 }
+//I think I need to crude things up :)
