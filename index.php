@@ -21,7 +21,7 @@ $removeKeyboard=array('remove_keyboard' => true);
 
 //death by if statement
 if ($text=='Order parts'){
-    $driver->sendMessage($id, "Great! Tell us about your car".$id);
+    $driver->sendMessage($id, "Great! Tell us about your car".$id."id");
     $driver->send_custom_keyboard($id, "Make", json_encode($makeMarkup));
 }
 elseif (in_array($text,$driver->allmakes())){
