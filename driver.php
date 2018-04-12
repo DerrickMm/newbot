@@ -23,7 +23,7 @@ class driver {
      */
     public function sendMessage($id, $text){
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,"https://api.telegram.org/bot572620584:AAHOh9RVrlKn2bPZdSzXtljOxIt2Or5MOpc/sendMessage");
+        curl_setopt($ch, CURLOPT_URL,"https://api.telegram.org/bot<token/sendMessage");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS,"chat_id=$id&text=$text");
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
@@ -43,7 +43,7 @@ class driver {
     
     public function send_custom_keyboard($id,$text,$markup){
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,"https://api.telegram.org/bot572620584:AAHOh9RVrlKn2bPZdSzXtljOxIt2Or5MOpc/sendMessage");
+        curl_setopt($ch, CURLOPT_URL,"https://api.telegram.org/bot<token/sendMessage");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS,"chat_id=$id&text=$text&reply_markup=$markup");
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
